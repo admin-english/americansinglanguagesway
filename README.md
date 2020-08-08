@@ -1,181 +1,142 @@
-# Chamilo 1.11.x
+# [Bootstrap](http://getbootstrap.com)
 
-[![Build Status](https://travis-ci.org/chamilo/chamilo-lms.svg?branch=1.11.x)](https://travis-ci.org/chamilo/chamilo-lms)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chamilo/chamilo-lms/badges/quality-score.png?b=1.11.x)](https://scrutinizer-ci.com/g/chamilo/chamilo-lms/?branch=1.11.x)
-[![Code Coverage](https://scrutinizer-ci.com/g/chamilo/chamilo-lms/badges/coverage.png?b=1.11.x)](https://scrutinizer-ci.com/g/chamilo/chamilo-lms/?branch=1.11.x)
-[![Bountysource](https://www.bountysource.com/badge/team?team_id=12439&style=raised)](https://www.bountysource.com/teams/chamilo?utm_source=chamilo&utm_medium=shield&utm_campaign=raised)
-[![Code Consistency](https://squizlabs.github.io/PHP_CodeSniffer/analysis/chamilo/chamilo-lms/grade.svg)](http://squizlabs.github.io/PHP_CodeSniffer/analysis/chamilo/chamilo-lms/)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/166/badge)](https://bestpractices.coreinfrastructure.org/projects/166)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/88e934aab2f34bb7a0397a6f62b078b2)](https://www.codacy.com/app/chamilo/chamilo-lms?utm_source=github.com&utm_medium=referral&utm_content=chamilo/chamilo-lms&utm_campaign=badger)
+[![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
+![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
+[![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
+[![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg)](https://travis-ci.org/twbs/bootstrap)
+[![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
+[![NuGet](https://img.shields.io/nuget/v/bootstrap.svg)](https://www.nuget.org/packages/Bootstrap)
+[![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
-## Installation
+Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
 
-This installation guide is for development environments only.
+To get started, check out <http://getbootstrap.com>!
 
-### Install PHP, a web server and MySQL/MariaDB
 
-To run Chamilo, you will need at least a web server (we recommend Apache2 for commodity reasons), a database server (we recommend MariaDB but will explain MySQL for commodity reasons) and a PHP interpreter (and a series of libraries for it). If you are working on a Debian-based system (Debian, Ubuntu, Mint, etc), just
-type
-```
-sudo apt-get install apache2 mysql-server php libapache2-mod-php php-gd php-intl php-curl php-json php-mysql
-```
+## Table of contents
 
-### Install Git
+* [Quick start](#quick-start)
+* [Bugs and feature requests](#bugs-and-feature-requests)
+* [Documentation](#documentation)
+* [Contributing](#contributing)
+* [Community](#community)
+* [Versioning](#versioning)
+* [Creators](#creators)
+* [Copyright and license](#copyright-and-license)
 
-The development version 1.11.x requires you to have Git installed. If you are working on a Debian-based system (Debian, Ubuntu, Mint, etc), just type
-```
-sudo apt-get install git
-```
 
-### Install Composer
+## Quick start
 
-To run the development version 1.11.x, you need Composer, a libraries dependency management system that will update all the libraries you need for Chamilo to the latest available version.
+Several quick start options are available:
 
-Make sure you have Composer installed. If you do, you should be able to launch "composer" on the command line and have the inline help of composer show a few subcommands. If you don't, please follow the installation guide at https://getcomposer.org/download/
+* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.7.zip).
+* Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
+* Install with [Bower](http://bower.io): `bower install bootstrap`.
+* Install with [npm](https://www.npmjs.com): `npm install bootstrap@3`.
+* Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
+* Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
 
-### Download Chamilo from GitHub
+Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
-Clone the repository
+### What's included
 
-```
-sudo mkdir chamilo-1.11
-sudo chown -R `whoami` chamilo-1.11
-git clone -b 1.11.x --single-branch https://github.com/chamilo/chamilo-lms.git chamilo-1.11
-```
-
-Checkout branch 1.11.x
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
 ```
-cd chamilo-1.11
-git checkout --track origin/1.11.x
-git config --global push.default current
+bootstrap/
+├── css/
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
+│   ├── bootstrap-theme.min.css
+│   └── bootstrap-theme.min.css.map
+├── js/
+│   ├── bootstrap.js
+│   └── bootstrap.min.js
+└── fonts/
+    ├── glyphicons-halflings-regular.eot
+    ├── glyphicons-halflings-regular.svg
+    ├── glyphicons-halflings-regular.ttf
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
 ```
 
-### Update dependencies using Composer
-
-From the Chamilo folder (in which you should be now if you followed the previous steps), launch:
-
-```
-composer update
-```
-
-If you face issues related to missing JS libraries, you might need to ensure
-that your web/assets folder is completely re-generated.
-Use this set of commands to do that:
-```
-rm composer.lock
-rm -rf web/ vendor/
-composer clear-cache
-composer update
-```
-This will take several minutes in the best case scenario, but should definitely
-generate the missing files.
-
-### Change permissions
-
-On a Debian-based system, launch:
-```
-sudo chown -R www-data:www-data app main/default_course_document/images main/lang web
-```
-
-### Start the installer
-
-In your browser, load the Chamilo URL. You should be automatically redirected 
-to the installer. If not, add the "main/install/index.php" suffix manually in 
-your browser address bar. The rest should be a matter of simple
- OK > Next > OK > Next...
-
-## Upgrade from 1.10.x
-
-1.11.0 is a major version. It contains a series of new features, that
-also mean a series of new database changes in regards with versions 1.10.x. As 
-such, it is necessary to go through an upgrade procedure when upgrading from 
-1.10.x to 1.11.x.
-
-The upgrade procedure is relatively straightforward. If you have a 1.10.x 
-initially installed with Git, here are the steps you should follow 
-(considering you are already inside the Chamilo folder):
-```
-git fetch --all
-git checkout origin 1.11.x
-```
-
-Then load the Chamilo URL in your browser, adding "main/install/index.php" and 
-follow the upgrade instructions. Select the "Upgrade from 1.10.x" button to 
-proceed.
-
-If you have previously updated database rows manually, you might face issue with
-FOREIGN KEYS during the upgrade process. Please make sure your database is
-consistent before upgrading. This usually means making sure that you have to delete
-rows from tables referring to rows which have been deleted from the user or access_url tables.
-Typically:
-<pre>
-    DELETE FROM access_url_rel_course WHERE access_url_id NOT IN (SELECT id FROM access_url);
-</pre>
-
-### Upgrading from non-Git Chamilo 1.10 ###
-
-In the *very unlikely* case of upgrading a "normal" Chamilo 1.10 installation (done with the downloadable zip package) to a Git-based installation, make sure you delete the contents of a few folders first. These folders are re-generated later by the ```composer update``` command. This is likely to increase the downtime of your Chamilo portal of a few additional minutes (plan for 10 minutes on a reasonnable internet connection).
-
-```
-rm composer.lock
-rm -rf web/*
-rm -rf vendor/*
-```
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developer.chrome.com/devtools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Fonts from Glyphicons are included, as is the optional Bootstrap theme.
 
 
-# For developers and testers only
+## Bugs and feature requests
 
-This section is for developers only (or for people who have a good reason to use
-a development version of Chamilo), in the sense that other people will not 
-need to update their Chamilo portal as described here.
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
 
-## Updating code
+Note that **feature requests must target [Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev),** because Bootstrap v3 is now in maintenance mode and is closed off to new features. This is so that we can focus our efforts on Bootstrap v4.
 
-To update your code with the latest developments in the 1.11.x branch, go to
-your Chamilo folder and type:
-```
-git pull origin 1.11.x
-```
-If you have made customizations to your code before the update, you will have
-two options:
-- abandon your changes (use "git stash" to do that)
-- commit your changes locally and merge (use "git commit" and then "git pull")
 
-You are supposed to have a reasonable understanding of Git in order to
-use Chamilo as a developer, so if you feel lost, please check the Git manual
-first: http://git-scm.com/documentation
+## Documentation
 
-## Updating your database from new code
+Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://getbootstrap.com>. The docs may also be run locally.
 
-Since the 2015-05-27, Chamilo offers the possibility to make partial database
-upgrades through Doctrine migrations.
+### Running documentation locally
 
-To update your database to the latest version, go to your Chamilo root folder
-and type
-```
-php bin/doctrine.php migrations:migrate --configuration=app/config/migrations.yml
-```
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) and other Ruby dependencies with `bundle install`.
+   **Note for Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
+2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
+4. Open `http://localhost:9001` in your browser, and voilà.
 
-If you want to proceed with a single migration "step" (the steps reside in
-src/Chamilo/CoreBundle/Migrations/Schema/V110/), then check the datetime of the
-version and type the following (assuming you want to execute Version20150527120703)
-```
-php bin/doctrine.php migrations:execute 20150527120703 --up --configuration=app/config/migrations.yml
-```
+Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
-You can also print the differences between your database and what it should be by issuing the following command from the Chamilo base folder:
-```
-php bin/doctrine.php orm:schema-tool:update --dump-sql
-```
+### Documentation for previous releases
+
+Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
+
+[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
+
 
 ## Contributing
 
-If you want to submit new features or patches to Chamilo, please follow the
-Github contribution guide https://guides.github.com/activities/contributing-to-open-source/
-and our CONTRIBUTING.md file.
-In short, we ask you to send us Pull Requests based on a branch that you create
-with this purpose into your repository forked from the original Chamilo repository.
+Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-# Documentation
-For more information on Chamilo, visit https://1.11.chamilo.org/documentation/index.html
+Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/twbs/bootstrap/tree/master/js/tests). All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
+
+**Bootstrap v3 is now closed off to new features.** It has gone into maintenance mode so that we can focus our efforts on [Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev), the future of the framework. Pull requests which add new features (rather than fix bugs) should target [Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev) instead.
+
+Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+
+
+## Community
+
+Get updates on Bootstrap's development and chat with the project maintainers and community members.
+
+* Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
+* Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
+* Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
+* Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
+* Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+* Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
+
+
+## Versioning
+
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+
+See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](http://blog.getbootstrap.com) contain summaries of the most noteworthy changes made in each release.
+
+
+## Creators
+
+**Mark Otto**
+
+* <https://twitter.com/mdo>
+* <https://github.com/mdo>
+
+**Jacob Thornton**
+
+* <https://twitter.com/fat>
+* <https://github.com/fat>
+
+
+## Copyright and license
+
+Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
