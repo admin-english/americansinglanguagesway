@@ -1,40 +1,32 @@
 {
-  "name": "blueimp-tmpl",
-  "version": "3.9.0",
-  "title": "JavaScript Templates",
-  "description": "1KB lightweight, fast & powerful JavaScript templating engine with zero dependencies. Compatible with server-side environments like Node.js, module loaders like RequireJS, Browserify or webpack and all web browsers.",
-  "keywords": [
-    "javascript",
-    "templates",
-    "templating"
-  ],
-  "homepage": "https://github.com/blueimp/JavaScript-Templates",
-  "author": {
-    "name": "Sebastian Tschan",
-    "url": "https://blueimp.net"
+  "name": "bootstrap-daterangepicker",
+  "version": "2.1.25",
+  "description": "Date range picker component for Bootstrap",
+  "main": "daterangepicker.js",
+  "style": "daterangepicker.css",
+  "scripts": {
+    "scss": "node-sass daterangepicker.scss > daterangepicker.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/blueimp/JavaScript-Templates.git"
+    "url": "https://github.com/dangrossman/bootstrap-daterangepicker.git"
+  },
+  "author": {
+    "name": "Dan Grossman",
+    "email": "dan@dangrossman.info",
+    "url": "http://www.dangrossman.info"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dangrossman/bootstrap-daterangepicker/issues"
+  },
+  "homepage": "https://github.com/dangrossman/bootstrap-daterangepicker",
+  "dependencies": {
+    "jquery": ">=1.10",
+    "moment": "^2.9.0"
+  },
   "devDependencies": {
-    "chai": "3.5.0",
-    "mocha": "3.1.0",
-    "standard": "8.3.0",
-    "uglify-js": "2.7.3"
-  },
-  "scripts": {
-    "lint": "standard js/*.js test/*.js",
-    "unit": "mocha",
-    "test": "npm run lint && npm run unit",
-    "build": "cd js && uglifyjs tmpl.js -c -m -o tmpl.min.js --source-map tmpl.min.js.map",
-    "preversion": "npm test",
-    "version": "npm run build && git add -A js",
-    "postversion": "git push --tags origin master master:gh-pages && npm publish"
-  },
-  "bin": {
-    "tmpl.js": "js/compile.js"
-  },
-  "main": "js/tmpl.js"
+    "node-sass": "^3.4.2"
+  }
 }
